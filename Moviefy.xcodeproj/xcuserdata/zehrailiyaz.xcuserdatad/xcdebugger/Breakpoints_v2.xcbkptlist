@@ -24,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C2F7E30D-43E5-4E1E-B37B-D4DAD1791F73"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Moviefy/ViewControllers/HomeViewController.swift"
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10"
             endingLineNumber = "10"
-            landmarkName = "HomeViewController"
+            landmarkName = "MovieListViewController"
             landmarkType = "3">
             <Locations>
                <Location
@@ -78,7 +78,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "181">
+                  offsetFromSymbolStart = "188">
                </Location>
                <Location
                   uuid = "C2F7E30D-43E5-4E1E-B37B-D4DAD1791F73 - 9ce51d9b8c659216"
@@ -108,115 +108,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "119">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3C813BA9-BE59-43EA-B78A-5011207F3399"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Moviefy/ViewControllers/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "HomeViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "3C813BA9-BE59-43EA-B78A-5011207F3399 - ef2b649c35541c9d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moviefy.HomeViewController.(movies in _FEEAE9E0A094DD5D6A9869DE4FC4B5E9).getter : Swift.Optional&lt;Moviefy.MovieMaker&gt;"
-                  moduleName = "Moviefy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "126">
-               </Location>
-               <Location
-                  uuid = "3C813BA9-BE59-43EA-B78A-5011207F3399 - 868e715cad529ca9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moviefy.HomeViewController.(movies in _FEEAE9E0A094DD5D6A9869DE4FC4B5E9).setter : Swift.Optional&lt;Moviefy.MovieMaker&gt;"
-                  moduleName = "Moviefy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "164">
-               </Location>
-               <Location
-                  uuid = "3C813BA9-BE59-43EA-B78A-5011207F3399 - 137cfe7cf9555d74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moviefy.HomeViewController.(movies in _FEEAE9E0A094DD5D6A9869DE4FC4B5E9).modify : Swift.Optional&lt;Moviefy.MovieMaker&gt;"
-                  moduleName = "Moviefy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "18">
-               </Location>
-               <Location
-                  uuid = "3C813BA9-BE59-43EA-B78A-5011207F3399 - 46a5033ce0e75df5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moviefy.HomeViewController.(movies in _FEEAE9E0A094DD5D6A9869DE4FC4B5E9).modify : Swift.Optional&lt;Moviefy.MovieMaker&gt; with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Moviefy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  uuid = "3C813BA9-BE59-43EA-B78A-5011207F3399 - db3c6fbc3ba696a6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moviefy.HomeViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Moviefy.HomeViewController"
-                  moduleName = "Moviefy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "181">
-               </Location>
-               <Location
-                  uuid = "3C813BA9-BE59-43EA-B78A-5011207F3399 - 5c24c5753095d2df"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moviefy.HomeViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Moviefy.HomeViewController&gt;"
-                  moduleName = "Moviefy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "119">
+                  offsetFromSymbolStart = "123">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -231,26 +123,216 @@
             filePath = "Moviefy/MovieRequests/MovieAPI.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "fetch(with:parameters:completion:)"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "MovieAPIRequests"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F770502C-D38A-4005-A968-D274C9E5713A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Moviefy/ViewModel/MovieListModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getMovies(with:format:language:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3807E458-67ED-4A78-A27C-4622C04BE14C"
-            shouldBeEnabled = "Yes"
+            uuid = "7C192DBE-B7B2-4091-AF7E-ACF5F45ED3D2"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Moviefy/MovieRequests/MovieAPI.swift"
+            filePath = "Moviefy/ViewModel/MovieListModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "fetchPopularMovies(with:format:language:completion:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "getMovies(with:format:language:callback:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94E2AAB2-25AF-4F7C-B210-49165E91A3BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Moviefy/ViewModel/MovieListModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getMovies(with:format:language:callback:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "94E2AAB2-25AF-4F7C-B210-49165E91A3BE - 572f587bd9d4a86b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moviefy.MoviesResponse, Swift.Error&gt;) -&gt; () in Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "203">
+               </Location>
+               <Location
+                  uuid = "94E2AAB2-25AF-4F7C-B210-49165E91A3BE - 572f587bd9d4a86b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moviefy.MoviesResponse, Swift.Error&gt;) -&gt; () in Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "94E2AAB2-25AF-4F7C-B210-49165E91A3BE - 572f587bd9d4a86b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moviefy.MoviesResponse, Swift.Error&gt;) -&gt; () in Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "950">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD6CC5A0-3770-4075-9B3A-C7641E4AC57C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Moviefy/ViewModel/MovieListModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "getMovies(with:format:language:callback:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AD6CC5A0-3770-4075-9B3A-C7641E4AC57C - 5f44aa89eb4f7b68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "494">
+               </Location>
+               <Location
+                  uuid = "AD6CC5A0-3770-4075-9B3A-C7641E4AC57C - 572f587bd9d4a8a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moviefy.MoviesResponse, Swift.Error&gt;) -&gt; () in Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "170">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5AA7A9D5-D0A5-4E7E-82D3-EAA256F925B0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Moviefy/ViewModel/MovieListModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "getMovies(with:format:language:callback:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5AA7A9D5-D0A5-4E7E-82D3-EAA256F925B0 - 572f587bd9d4a86b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moviefy.MoviesResponse, Swift.Error&gt;) -&gt; () in Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "203">
+               </Location>
+               <Location
+                  uuid = "5AA7A9D5-D0A5-4E7E-82D3-EAA256F925B0 - 572f587bd9d4a86b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moviefy.MoviesResponse, Swift.Error&gt;) -&gt; () in Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "5AA7A9D5-D0A5-4E7E-82D3-EAA256F925B0 - 572f587bd9d4a86b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moviefy.MoviesResponse, Swift.Error&gt;) -&gt; () in Moviefy.MovieListModel.getMovies(with: Moviefy.MovieAPIResources, format: Moviefy.MovieAPIFormat, language: Moviefy.MovieAPIFormat, callback: (Swift.Array&lt;Moviefy.MovieModel&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Moviefy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zehrailiyaz/Projects/Moviefy/Moviefy/ViewModel/MovieListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "950">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

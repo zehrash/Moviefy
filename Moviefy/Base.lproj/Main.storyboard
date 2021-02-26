@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wsd-FO-Y2B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u7Q-M8-5z3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -81,16 +81,58 @@
             </objects>
             <point key="canvasLocation" x="366.66666666666669" y="-198.21428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Menu View Controller-->
+        <scene sceneID="hX7-Q2-YOL">
+            <objects>
+                <viewController storyboardIdentifier="MainMenuViewControllerID" id="u7Q-M8-5z3" customClass="MainMenuViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="giu-Zk-O1R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cn3-bv-h19">
+                                <rect key="frame" x="0.0" y="69" width="414" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <segments>
+                                    <segment title="Movies"/>
+                                    <segment title="Watch Later"/>
+                                    <segment title="Watched"/>
+                                    <segment title="Profile"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="u7Q-M8-5z3" eventType="valueChanged" id="Ouv-Ur-zFb"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m6M-Z1-YY7">
+                                <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.1293664162" blue="0.2263807484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.1293664162" blue="0.2263807484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JN2-B3-rbe"/>
+                        <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="m6M-Z1-YY7" id="c0c-bM-Vo8"/>
+                        <outlet property="segmentControl" destination="cn3-bv-h19" id="qPT-HM-FKc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTs-20-c87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1179.7101449275362" y="-9.375"/>
+        </scene>
+        <!--Watch Later View Controller-->
         <scene sceneID="7Sn-m4-zCN">
             <objects>
-                <viewController id="3Zp-UJ-3tj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WatchLaterViewControllerID" id="3Zp-UJ-3tj" customClass="WatchLaterViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x7n-ch-4VR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movies screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x35-4v-Nzk">
-                                <rect key="frame" x="133" y="360" width="149" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="watch later screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x35-4v-Nzk">
+                                <rect key="frame" x="133" y="360" width="188" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -99,11 +141,13 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JMn-Nx-1K0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="WatchLaterViewController"/>
                     </view>
+                    <navigationItem key="navigationItem" id="YYJ-lq-Crs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enL-bb-Xjf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1917" y="-674"/>
+            <point key="canvasLocation" x="2093" y="-894"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="sJt-ii-s2R">
@@ -138,58 +182,71 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGG-fY-fBG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830" y="-674"/>
+            <point key="canvasLocation" x="3674" y="-1262"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Movie List View Controller-->
         <scene sceneID="5dv-tU-agP">
             <objects>
-                <viewController storyboardIdentifier="HomeViewControllerID" id="wsd-FO-Y2B" customClass="HomeViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieListViewControllerID" id="wsd-FO-Y2B" customClass="MovieListViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vpC-J2-0E9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DVI-dp-6yq">
-                                <rect key="frame" x="0.0" y="54" width="203" height="274"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QOF-9X-fdJ">
-                                    <size key="itemSize" width="193" height="269"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="10" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DVI-dp-6yq">
+                                <rect key="frame" x="0.0" y="58" width="414" height="804"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="QOF-9X-fdJ">
+                                    <size key="itemSize" width="180" height="267"/>
+                                    <size key="estimatedItemSize" width="177" height="257"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionViewCell" id="UxI-Fw-Oae" customClass="MovieCollectionViewCell" customModule="Moviefy" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="0.0" width="193" height="269"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="267"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tuW-KY-FLH">
-                                            <rect key="frame" x="0.0" y="0.0" width="193" height="269"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="267"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8og-cq-GNK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="193" height="219"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hra-cW-Bni">
+                                                    <rect key="frame" x="15" y="205" width="151" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dfhdfhdddfhdfhdfhdfhdfhdfhdfh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hra-cW-Bni">
-                                                    <rect key="frame" x="0.0" y="220" width="193" height="41"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Test Text">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="19" name="DINAlternate-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8og-cq-GNK">
+                                                    <rect key="frame" x="15" y="0.0" width="151" height="206"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="193" height="269"/>
+                                        <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="180" height="267"/>
                                         <connections>
                                             <outlet property="movieImageView" destination="8og-cq-GNK" id="afE-Bv-4tC"/>
                                             <outlet property="movieTitleLabel" destination="hra-cW-Bni" id="vUw-yy-fDf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="delegate" destination="wsd-FO-Y2B" id="aMh-h5-ngX"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jon-oo-S9c"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="DVI-dp-6yq" id="zof-KF-bcB"/>
@@ -197,76 +254,114 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJB-Rx-eHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1179.7101449275362" y="118.52678571428571"/>
+            <point key="canvasLocation" x="3015.9420289855075" y="-224.33035714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Movies View Controller-->
         <scene sceneID="hMY-Lb-3v4">
             <objects>
-                <viewController id="joV-sY-4fp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoviesViewControllerID" id="joV-sY-4fp" customClass="MoviesViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GmW-op-Eln">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="155" estimatedRowHeight="-1" sectionHeaderHeight="20" sectionFooterHeight="35" translatesAutoresizingMaskIntoConstraints="NO" id="2BA-a7-bZB">
+                                <rect key="frame" x="0.0" y="83" width="414" height="759"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="155" id="ujm-oO-oNs" customClass="CategoryTableViewCell" customModule="Moviefy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="155"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ujm-oO-oNs" id="sI3-FF-2Gd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3s3-zc-EeT">
+                                                    <rect key="frame" x="66" y="3" width="283" height="141"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <outlet property="categoryImage" destination="3s3-zc-EeT" id="jea-bF-Zqe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="joV-sY-4fp" id="vcI-TR-PcR"/>
+                                    <outlet property="delegate" destination="joV-sY-4fp" id="CB8-Qb-Bs9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Pj2-fs-lrN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration" identifier="MoviesViewController"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="2BA-a7-bZB" id="QUb-Y9-MLH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nyv-kk-596" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="-9"/>
+            <point key="canvasLocation" x="2092.753623188406" y="-235.04464285714283"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="GXZ-tF-FF9">
+        <!--Watched View Controller-->
+        <scene sceneID="T02-lu-Elt">
             <objects>
-                <viewController id="vv1-mQ-TAd" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="egL-Gl-37v">
+                <viewController storyboardIdentifier="WatchedViewControllerID" id="7wi-bH-sHa" customClass="WatchedViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1aZ-ct-hka">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSa-vK-ZVe">
-                                <rect key="frame" x="173" y="349" width="122" height="135"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="watched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oM-uw-1Lk">
+                                <rect key="frame" x="174" y="340" width="65" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="jFW-gH-d19"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bVZ-ZP-S66" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2940.579710144928" y="227.67857142857142"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="T02-lu-Elt">
-            <objects>
-                <viewController id="7wi-bH-sHa" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1aZ-ct-hka">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="1dM-Pa-IS8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="WatchedViewController"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ube-0u-iXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="656"/>
+            <point key="canvasLocation" x="2092.753623188406" y="438.61607142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="DQd-3B-Olm">
             <objects>
-                <viewController id="bIJ-M4-FSF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewControllerID" id="bIJ-M4-FSF" customClass="ProfileViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qha-u0-bds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnX-UK-yAP">
+                                <rect key="frame" x="136" y="420" width="48" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Xag-yz-4kG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="ProfileViewController"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozA-Qj-dws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1941" y="1308"/>
+            <point key="canvasLocation" x="2104" y="1118"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="zbv-4H-i7o">
@@ -375,6 +470,7 @@
             <point key="canvasLocation" x="366.66666666666669" y="463.39285714285711"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.12859928609999999" blue="0.2281944454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

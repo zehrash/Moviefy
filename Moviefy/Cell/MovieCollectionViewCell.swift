@@ -6,22 +6,16 @@
 //
 
 import UIKit
+import Nuke
 
 class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
-    private var movie: MovieModel?
     
-    func setMovieModel(from: MovieModel?){
-        movie = from
-        self.setup(with: movie)
-    }
-    func getMovieModel()->MovieModel?{
-        return movie
-    }
     
-    func setup(with movie: MovieModel?) {
-        movieImageView.image = movie?.thumbnail
-        movieTitleLabel.text = movie?.title
+    func setup(with movie: MovieModel) {
+        Nuke.loadImage(with: movie.posterURL,
+                       into: movieImageView)
+        movieTitleLabel.text = movie.title
        }
 }

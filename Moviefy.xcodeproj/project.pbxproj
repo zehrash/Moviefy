@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E36D564725E669460088D91C /* MovieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D564625E669460088D91C /* MovieListModel.swift */; };
+		E36D564D25E7DCFA0088D91C /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = E36D564C25E7DCFA0088D91C /* Nuke */; };
 		E372DD7C25D2BA1E00ED5B20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DD7B25D2BA1E00ED5B20 /* AppDelegate.swift */; };
 		E372DD7E25D2BA1E00ED5B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DD7D25D2BA1E00ED5B20 /* SceneDelegate.swift */; };
 		E372DD8025D2BA1E00ED5B20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DD7F25D2BA1E00ED5B20 /* ViewController.swift */; };
@@ -19,15 +21,17 @@
 		E372DDB625D3DCDF00ED5B20 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDB525D3DCDF00ED5B20 /* Movie.swift */; };
 		E372DDBB25D3DCF100ED5B20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDBA25D3DCF100ED5B20 /* User.swift */; };
 		E372DDC125D3DDEE00ED5B20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDC025D3DDEE00ED5B20 /* LoginViewController.swift */; };
-		E372DDC925D3DF2F00ED5B20 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDC825D3DF2F00ED5B20 /* HomeViewController.swift */; };
-		E372DDCE25D3DF4B00ED5B20 /* MovieListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDCD25D3DF4B00ED5B20 /* MovieListsViewController.swift */; };
+		E372DDC925D3DF2F00ED5B20 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDC825D3DF2F00ED5B20 /* MovieListViewController.swift */; };
 		E372DDD325D3E04400ED5B20 /* ExpandedMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDD225D3E04400ED5B20 /* ExpandedMovieViewController.swift */; };
 		E372DDD825D3E06200ED5B20 /* WatchLaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDD725D3E06200ED5B20 /* WatchLaterViewController.swift */; };
 		E372DDDD25D3E07700ED5B20 /* WatchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDDC25D3E07700ED5B20 /* WatchedViewController.swift */; };
 		E372DDE225D3E08500ED5B20 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDE125D3E08500ED5B20 /* ProfileViewController.swift */; };
 		E372DDE825DBF23E00ED5B20 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDE725DBF23E00ED5B20 /* MovieAPI.swift */; };
-		E372DDF325DE747300ED5B20 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDF225DE747300ED5B20 /* Parser.swift */; };
 		E372DDF825DFBA5B00ED5B20 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DDF725DFBA5B00ED5B20 /* MovieCollectionViewCell.swift */; };
+		E372DE0125E3D00A00ED5B20 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DE0025E3D00A00ED5B20 /* MainMenuViewController.swift */; };
+		E372DE0625E3D29B00ED5B20 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372DE0525E3D29B00ED5B20 /* MoviesViewController.swift */; };
+		E389DB6F25E8743800F33AFC /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D565125E8712D0088D91C /* CategoryTableViewCell.swift */; };
+		E389DB8225E93BD400F33AFC /* RequestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389DB8125E93BD400F33AFC /* RequestUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E36D564625E669460088D91C /* MovieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListModel.swift; sourceTree = "<group>"; };
+		E36D565125E8712D0088D91C /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		E372DD7825D2BA1E00ED5B20 /* Moviefy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moviefy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E372DD7B25D2BA1E00ED5B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E372DD7D25D2BA1E00ED5B20 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,15 +72,16 @@
 		E372DDB525D3DCDF00ED5B20 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E372DDBA25D3DCF100ED5B20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E372DDC025D3DDEE00ED5B20 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E372DDC825D3DF2F00ED5B20 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E372DDCD25D3DF4B00ED5B20 /* MovieListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListsViewController.swift; sourceTree = "<group>"; };
+		E372DDC825D3DF2F00ED5B20 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		E372DDD225D3E04400ED5B20 /* ExpandedMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedMovieViewController.swift; sourceTree = "<group>"; };
 		E372DDD725D3E06200ED5B20 /* WatchLaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLaterViewController.swift; sourceTree = "<group>"; };
 		E372DDDC25D3E07700ED5B20 /* WatchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedViewController.swift; sourceTree = "<group>"; };
 		E372DDE125D3E08500ED5B20 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E372DDE725DBF23E00ED5B20 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
-		E372DDF225DE747300ED5B20 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		E372DDF725DFBA5B00ED5B20 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		E372DE0025E3D00A00ED5B20 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		E372DE0525E3D29B00ED5B20 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		E389DB8125E93BD400F33AFC /* RequestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E36D564D25E7DCFA0088D91C /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +136,7 @@
 				E372DDFC25DFFD2900ED5B20 /* Cell */,
 				E372DDE625DBF20300ED5B20 /* MovieRequests */,
 				E372DDBF25D3DD9900ED5B20 /* ViewControllers */,
-				E372DDB125D2C34500ED5B20 /* Model */,
+				E372DDB125D2C34500ED5B20 /* Models */,
 				E372DD7B25D2BA1E00ED5B20 /* AppDelegate.swift */,
 				E372DD7D25D2BA1E00ED5B20 /* SceneDelegate.swift */,
 				E372DD7F25D2BA1E00ED5B20 /* ViewController.swift */,
@@ -159,26 +167,27 @@
 			path = MoviefyUITests;
 			sourceTree = "<group>";
 		};
-		E372DDB125D2C34500ED5B20 /* Model */ = {
+		E372DDB125D2C34500ED5B20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E36D564625E669460088D91C /* MovieListModel.swift */,
 				E372DDB525D3DCDF00ED5B20 /* Movie.swift */,
 				E372DDBA25D3DCF100ED5B20 /* User.swift */,
-				E372DDF225DE747300ED5B20 /* Parser.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E372DDBF25D3DD9900ED5B20 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				E372DDC025D3DDEE00ED5B20 /* LoginViewController.swift */,
-				E372DDC825D3DF2F00ED5B20 /* HomeViewController.swift */,
-				E372DDCD25D3DF4B00ED5B20 /* MovieListsViewController.swift */,
+				E372DDC825D3DF2F00ED5B20 /* MovieListViewController.swift */,
 				E372DDD225D3E04400ED5B20 /* ExpandedMovieViewController.swift */,
 				E372DDD725D3E06200ED5B20 /* WatchLaterViewController.swift */,
 				E372DDDC25D3E07700ED5B20 /* WatchedViewController.swift */,
 				E372DDE125D3E08500ED5B20 /* ProfileViewController.swift */,
+				E372DE0025E3D00A00ED5B20 /* MainMenuViewController.swift */,
+				E372DE0525E3D29B00ED5B20 /* MoviesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				E372DDE725DBF23E00ED5B20 /* MovieAPI.swift */,
+				E389DB8125E93BD400F33AFC /* RequestUtil.swift */,
 			);
 			path = MovieRequests;
 			sourceTree = "<group>";
@@ -195,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				E372DDF725DFBA5B00ED5B20 /* MovieCollectionViewCell.swift */,
+				E36D565125E8712D0088D91C /* CategoryTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -215,6 +226,9 @@
 			dependencies = (
 			);
 			name = Moviefy;
+			packageProductDependencies = (
+				E36D564C25E7DCFA0088D91C /* Nuke */,
+			);
 			productName = Moviefy;
 			productReference = E372DD7825D2BA1E00ED5B20 /* Moviefy.app */;
 			productType = "com.apple.product-type.application";
@@ -286,6 +300,9 @@
 				Base,
 			);
 			mainGroup = E372DD6F25D2BA1E00ED5B20;
+			packageReferences = (
+				E36D564B25E7DCFA0088D91C /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = E372DD7925D2BA1E00ED5B20 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -331,20 +348,23 @@
 			files = (
 				E372DDD325D3E04400ED5B20 /* ExpandedMovieViewController.swift in Sources */,
 				E372DDDD25D3E07700ED5B20 /* WatchedViewController.swift in Sources */,
-				E372DDF325DE747300ED5B20 /* Parser.swift in Sources */,
 				E372DDC125D3DDEE00ED5B20 /* LoginViewController.swift in Sources */,
 				E372DDE825DBF23E00ED5B20 /* MovieAPI.swift in Sources */,
-				E372DDCE25D3DF4B00ED5B20 /* MovieListsViewController.swift in Sources */,
 				E372DD8025D2BA1E00ED5B20 /* ViewController.swift in Sources */,
 				E372DD7C25D2BA1E00ED5B20 /* AppDelegate.swift in Sources */,
-				E372DDC925D3DF2F00ED5B20 /* HomeViewController.swift in Sources */,
+				E372DDC925D3DF2F00ED5B20 /* MovieListViewController.swift in Sources */,
 				E372DDBB25D3DCF100ED5B20 /* User.swift in Sources */,
 				E372DDD825D3E06200ED5B20 /* WatchLaterViewController.swift in Sources */,
+				E372DE0125E3D00A00ED5B20 /* MainMenuViewController.swift in Sources */,
 				E372DD7E25D2BA1E00ED5B20 /* SceneDelegate.swift in Sources */,
 				E372DDE225D3E08500ED5B20 /* ProfileViewController.swift in Sources */,
+				E389DB8225E93BD400F33AFC /* RequestUtil.swift in Sources */,
 				E372DD8625D2BA1E00ED5B20 /* Moviefy.xcdatamodeld in Sources */,
+				E389DB6F25E8743800F33AFC /* CategoryTableViewCell.swift in Sources */,
 				E372DDB625D3DCDF00ED5B20 /* Movie.swift in Sources */,
 				E372DDF825DFBA5B00ED5B20 /* MovieCollectionViewCell.swift in Sources */,
+				E36D564725E669460088D91C /* MovieListModel.swift in Sources */,
+				E372DE0625E3D29B00ED5B20 /* MoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +697,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E36D564B25E7DCFA0088D91C /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E36D564C25E7DCFA0088D91C /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E36D564B25E7DCFA0088D91C /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E372DD8425D2BA1E00ED5B20 /* Moviefy.xcdatamodeld */ = {

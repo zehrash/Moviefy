@@ -8,34 +8,18 @@
 import Foundation
 import UIKit
 
-enum MovieAPIResources: String{
-    case popular,
-         top_rated,
-         upcoming,
-         now_playing
-}
-
-enum MovieAPIFormat:String{
-    case api_key = "25ade48746a03a4c0a91070686e7b028",
-         language = "en-US"
-}
-enum MovieImageSize: String {
-    case small = "w92"
-    case medium = "w185"
-    case big = "w500"
-    case original = "original"
-}
 
 struct MovieAPIRequests{
+    typealias Handler = (Result<MoviesResponse, Error>) -> Void
     
+    let jsonDecoder = JSONDecoder()
     private init() {}
    
     static let shared = MovieAPIRequests()
-    private let imageBaseURL = "https://image.tmdb.org/t/p/"
+    private let imageBaseURL = "https://image.tmdb.org/t/p/" //needed for getImage()
     
     let session = URLSession.shared
-    //let url = URL(string: "...")!
-    
+  
     var urlComponents: URLComponents {
             var urlComponents = URLComponents()
             urlComponents.scheme = "https"
@@ -43,50 +27,8 @@ struct MovieAPIRequests{
         return urlComponents
         }
     
-    
-    func fetchPopularMovies(with resources: MovieAPIResources, format: MovieAPIFormat,language :MovieAPIFormat,completion: @escaping(Data?, Error?) -> Void){
-        fetch(with: resources, parameters: ["api_key": format.rawValue,
-                                            "language": language.rawValue
-        ], completion: completion)
-    }
-    
-    
-    func fetchTopRatedMovies(with resources: MovieAPIResources, format: MovieAPIFormat,language :MovieAPIFormat,completion: @escaping(Data?, Error?) -> Void){
-        fetch(with: resources, parameters: ["api_key": format.rawValue,
-                                            "language": language.rawValue
-        ], completion: completion)
-        
-    }
-    
-    func fetchTrendingMovies(with resources: MovieAPIResources, format: MovieAPIFormat,language :MovieAPIFormat, completion: @escaping(Data?, Error?) -> Void){
-        fetch(with: resources, parameters: ["api_key": format.rawValue,
-                                            "language": language.rawValue
-        ], completion: completion)
-      print(  MovieAPIRequests.shared.urlComponents.url?.absoluteString)
-    }
-    
-    func fetchUpcomingMovies(with resources: MovieAPIResources, format: MovieAPIFormat,language :MovieAPIFormat,completion: @escaping(Data?, Error?) -> Void){
-        fetch(with: resources, parameters: ["api_key": format.rawValue,
-                                            "language": format.rawValue
-        ], completion: completion)
-        
-        
-    }
-    private func fetch(with resources: MovieAPIResources, parameters: [String: String], completion: @escaping(Data?, Error?) -> Void) {
-           var urlComponents = self.urlComponents
-           urlComponents.path = "/3/movie/\(resources)"
-         urlComponents.setQueryItems(with: parameters)
-        
-           guard let url = urlComponents.url else {
-               completion(nil, NSError(domain: "", code: 100, userInfo: nil))
-               return
-           }
-           session.dataTask(with: url) { (data, _, error) in
-               completion(data, error)
-           }.resume()
-        
-        print( url.absoluteURL)
-       }
+ /*
+     This method can be used for requesting images instead of loading with Nuke
     
     func getImage(path: String, size: MovieImageSize, completion: @escaping (Data?) -> ()) {
             guard let url = URL(string: imageBaseURL + size.rawValue + path) else {
@@ -117,126 +59,51 @@ struct MovieAPIRequests{
                 completion(data)
             }.resume()
         }
-}
-
-func getTrendingMovies() ->MovieMaker? {
-    var response: MovieMaker? = nil
-    MovieAPIRequests.shared.fetchTrendingMovies(with: .now_playing, format: .api_key.self, language: .language.self){
-        (data, error) in
-        
-        if (error != nil) {
-                        NSLog("E: MovieAPI -- error != nil")
-                        return
-                    }
-                    if (data == nil) {
-                        NSLog("E: MovieStore -- data returned nil")
-                        return
-                    }
-                    let responseString = String(data: data!, encoding: .utf8)!
-                    guard let dictionary = responseString.toDictionary() else {
-                        NSLog("E: MovieStore -- String().toDictionary() returned nil")
-                        return
-                    }
-                    let results = dictionary.value(forKeyPath: "results") as? NSArray
-                    //print(results?.count)
-                    let response: MovieMaker = MovieMaker(results: results!)
-        
-                        //If i use Codable
-        /*
-        if let data = data{
-           //let dataString = String(data: data, encoding: .utf8) {
-           //let jsonData = dataString.data(using: .utf8)!//{
-                let decoder = JSONDecoder()
-
-                do {
-                    let movies = try decoder.decode([MovieModel].self, from: data)
-                    print(movies[0].title)
-                } catch {
-                    print(error.localizedDescription)
-                }
-        }
- */
-        
-    }
-    return response
-}
-
-func getPopularMovies()->MovieMaker? {
-    var response: MovieMaker? = nil
-    MovieAPIRequests.shared.fetchPopularMovies(with: .popular, format: .api_key.self, language: .language.self){
-        (data, error) in
-       
-        if (error != nil) {
-                        NSLog("E: MovieAPI -- error != nil")
-                        return
-                    }
-        if (data == nil) {
-                        NSLog("E: MovieStore -- data returned nil")
-                        return
-                    }
-        let responseString = String(data: data!, encoding: .utf8)!
-        guard let dictionary = responseString.toDictionary() else {
-                NSLog("E: MovieStore -- String().toDictionary() returned nil")
-                return
-        }
-        let results = dictionary.value(forKeyPath: "results") as? NSArray
-        //print(results?.count)
-        response = MovieMaker(results: results!)
-       
-    }
-    return response
-}
-
+     */
+    func fetchMovies(with resources: String, parameters: [String: String],
+                       then handler: @escaping Handler){
+     
+       var urlComponents = self.urlComponents
+       urlComponents.path = "/3/movie/\(resources)"
+       urlComponents.setQueryItems(with: parameters)
+           guard let url = urlComponents.url else {
+            handler(.failure(MovieError.invalidEndpoint))
+               return
+           }
+           session.dataTask(with: url) { (data, response, error) in
+               if error != nil {
+                self.handleError(errorHandler: handler, error: MovieError.apiError)
+                   return
+               }
+               
+               guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+                   self.handleError(errorHandler: handler, error: MovieError.invalidResponse)
+                   return
+               }
+               
+               guard let data = data else {
+                   self.handleError(errorHandler: handler, error: MovieError.noData)
+                   return
+               }
+              
+               do {
+                   let moviesResponse = try jsonDecoder.decode(MoviesResponse.self, from: data)
+                   DispatchQueue.main.async {
+                    handler(.success(moviesResponse))
+                   }
+             } catch {
+                   self.handleError(errorHandler: handler, error: MovieError.serializationError)
+               }
+           }.resume()
+       }
     
-func getUpcomingMovies()->MovieMaker? {
-    var response: MovieMaker? = nil
-    MovieAPIRequests.shared.fetchUpcomingMovies(with: .upcoming, format: .api_key.self, language: .language.self){
-        (data, error) in
-        
-        if (error != nil) {
-                        NSLog("E: MovieAPI -- error != nil")
-                        return
-                    }
-                    if (data == nil) {
-                        NSLog("E: MovieStore -- data returned nil")
-                        return
-                    }
-                    let responseString = String(data: data!, encoding: .utf8)!
-                    guard let dictionary = responseString.toDictionary() else {
-                        NSLog("E: MovieStore -- String().toDictionary() returned nil")
-                        return
-                    }
-                    let results = dictionary.value(forKeyPath: "results") as? NSArray
-                    //print(results?.count)
-                    let response: MovieMaker = MovieMaker(results: results!)
-        }
-    return response
-}
-    
-func getTopRatedMovies() ->MovieMaker? {
-    var response: MovieMaker? = nil
-    MovieAPIRequests.shared.fetchTopRatedMovies(with: .top_rated, format: .api_key.self, language: .language.self){
-        (data, error) in
-        if (error != nil) {
-            NSLog("E: MovieAPI -- error != nil")
-            return
-        }
-        if (data == nil) {
-            NSLog("E: MovieStore -- data returned nil")
-            return
-        }
-        let responseString = String(data: data!, encoding: .utf8)!
-        guard let dictionary = responseString.toDictionary() else {
-            NSLog("E: MovieStore -- String().toDictionary() returned nil")
-            return
-        }
-        let results = dictionary.value(forKeyPath: "results") as? NSArray
-        //print(results?.count)
-        let response: MovieMaker = MovieMaker(results: results!)
+    private func handleError(errorHandler: @escaping Handler, error: Error) {
+           DispatchQueue.main.async {
+            errorHandler(.failure(error))
+           }
     }
-    return response
 }
-    
+
 extension URLComponents {
     
     mutating func setQueryItems(with parameters: [String: String]) {
