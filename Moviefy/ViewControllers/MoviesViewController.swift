@@ -7,30 +7,11 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
+class MoviesViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     let allImages = [UIImage(named: "popular"), UIImage(named: "trending"), UIImage(named: "top_rated"), UIImage(named: "upcoming")]
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CategoryTableViewCell
-        
-        let image = allImages[indexPath .row]
-        cell.categoryImage.image=image
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let viewController = storyboard?.instantiateViewController(identifier: "MovieListViewControllerID") as? MovieListViewController {
-            viewController.endpointType = getCategoryType(typeNumber: indexPath.row)
-            self.present(viewController, animated: true)
-           // navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -54,4 +35,31 @@ class MoviesViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
+
+extension MoviesViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allImages.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CategoryTableViewCell
+
+        cell.categoryImage.image=allImages[indexPath .row]
+        return cell
+    }
+}
+
+extension MoviesViewController: UITableViewDelegate{
+    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         
+         if let viewController = storyboard?.instantiateViewController(identifier: "MovieListViewControllerID") as? MovieListViewController {
+             viewController.endpointType = getCategoryType(typeNumber: indexPath.row)
+             self.present(viewController, animated: true)
+         }
+     }
 }

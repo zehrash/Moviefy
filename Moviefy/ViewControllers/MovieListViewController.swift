@@ -7,27 +7,14 @@
 
 import UIKit
 
-class MovieListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class MovieListViewController: UIViewController{
     
     var endpointType:MovieAPIResources?
     var movies = [MovieModel] ()
     var model = MovieListModel ()
     
     @IBOutlet weak var collectionView: UICollectionView!
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (movies.count)
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
-    
-        cell.setup(with: movies[indexPath.row] as MovieModel)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(movies[indexPath.row] as MovieModel )
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +24,35 @@ class MovieListViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     private func getMovies(){
         
-        model.getMovies(with: endpointType!, format:.api_key.self, language: .language.self){
+        MovieListModel.getMovies(with: endpointType!,language: .language.self){
             result in
             self.movies = result
             self.collectionView.reloadData()
         }
+    }
+}
+extension MovieListViewController: UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "DetailedMovieViewControllerID") as? DetailedMovieViewController {
+            viewController.movieID = (movies[indexPath.row].id)
+            self.present(viewController, animated: true)
+        }
+        //print(movies[indexPath.row] as MovieModel )
+    }
+}
+
+extension MovieListViewController: UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (movies.count)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
+    
+        cell.setup(with: movies[indexPath.row])
+        return cell
     }
 }

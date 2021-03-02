@@ -10,9 +10,12 @@ import UIKit
 
 
 struct MovieAPIRequests{
-    typealias Handler = (Result<MoviesResponse, Error>) -> Void
+    typealias Handler = (Result<MoviesResponse, MovieError>) -> Void
+    typealias MovieDetailsHandler = (Result<MovieModel, MovieError>) -> Void
     
+    let api_key = "25ade48746a03a4c0a91070686e7b028"
     let jsonDecoder = JSONDecoder()
+    
     private init() {}
    
     static let shared = MovieAPIRequests()
@@ -26,7 +29,7 @@ struct MovieAPIRequests{
             urlComponents.host = "api.themoviedb.org"
         return urlComponents
         }
-    
+
  /*
      This method can be used for requesting images instead of loading with Nuke
     
@@ -62,27 +65,26 @@ struct MovieAPIRequests{
      */
     func fetchMovies(with resources: String, parameters: [String: String],
                        then handler: @escaping Handler){
+        
+    
      
        var urlComponents = self.urlComponents
        urlComponents.path = "/3/movie/\(resources)"
-       urlComponents.setQueryItems(with: parameters)
+        urlComponents.setQueryItems(with: parameters)
+        
            guard let url = urlComponents.url else {
-            handler(.failure(MovieError.invalidEndpoint))
+            handler(.failure(.invalidEndpoint))
                return
            }
+        print(url)
            session.dataTask(with: url) { (data, response, error) in
                if error != nil {
-                self.handleError(errorHandler: handler, error: MovieError.apiError)
-                   return
-               }
-               
-               guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
-                   self.handleError(errorHandler: handler, error: MovieError.invalidResponse)
+                self.handleError(errorHandler: handler, error: .apiError)
                    return
                }
                
                guard let data = data else {
-                   self.handleError(errorHandler: handler, error: MovieError.noData)
+                   self.handleError(errorHandler: handler, error: .noData)
                    return
                }
               
@@ -92,12 +94,83 @@ struct MovieAPIRequests{
                     handler(.success(moviesResponse))
                    }
              } catch {
-                   self.handleError(errorHandler: handler, error: MovieError.serializationError)
+                   self.handleError(errorHandler: handler, error: .serializationError)
                }
            }.resume()
        }
     
-    private func handleError(errorHandler: @escaping Handler, error: Error) {
+    func fetchMovieDetails(with movieID: Int, parameters: [String: String],
+                           then handler: @escaping MovieDetailsHandler){
+     
+        var urlComponents = self.urlComponents
+        urlComponents.path = "/3/movie/\(movieID)"
+        urlComponents.setQueryItems(with: parameters)
+            guard let url = urlComponents.url else {
+             handler(.failure(.invalidEndpoint))
+                return
+            }
+            session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                 self.handleMovieError(errorHandler: handler, error: .apiError)
+                    return
+                }
+                                
+                guard let data = data else {
+                    self.handleMovieError(errorHandler: handler, error: .noData)
+                    return
+                }
+               
+                do {
+                    let movieModelResponse = try jsonDecoder.decode(MovieModel.self, from: data)
+                    DispatchQueue.main.async {
+                     handler(.success(movieModelResponse))
+                    }
+              } catch {
+                    self.handleMovieError(errorHandler: handler, error: .serializationError)
+                }
+            }.resume()
+        
+    }
+    
+    func fetchMoviesByKeyword(parameters: [String: String],then handler: @escaping Handler){
+        var urlComponents = self.urlComponents
+        urlComponents.path = "/3/search/movie"
+        urlComponents.setQueryItems(with: parameters)
+            guard let url = urlComponents.url else {
+             handler(.failure(MovieError.invalidEndpoint))
+                return
+            }
+        
+        print(url)
+        session.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+             self.handleError(errorHandler: handler, error: .apiError)
+                return
+            }
+        
+            
+            guard let data = data else {
+                self.handleError(errorHandler: handler, error: .noData)
+                return
+            }
+           
+            do {
+                let moviesResponse = try jsonDecoder.decode(MoviesResponse.self, from: data)
+                DispatchQueue.main.async {
+                 handler(.success(moviesResponse))
+                }
+          } catch {
+                self.handleError(errorHandler: handler, error: .serializationError)
+            }
+        }.resume()
+    }
+    
+    private func handleError(errorHandler: @escaping Handler, error: MovieError) {
+           DispatchQueue.main.async {
+            errorHandler(.failure(error))
+           }
+    }
+    private func handleMovieError(errorHandler: @escaping MovieDetailsHandler, error: MovieError) {
            DispatchQueue.main.async {
             errorHandler(.failure(error))
            }
@@ -107,8 +180,14 @@ struct MovieAPIRequests{
 extension URLComponents {
     
     mutating func setQueryItems(with parameters: [String: String]) {
-        self.queryItems = parameters.map {
-            URLQueryItem(name: $0.key, value: $0.value)
+        
+        var items = [URLQueryItem(name: "api_key", value: MovieAPIRequests.shared.api_key)]
+        
+        for (key,value) in parameters{
+            items.append(URLQueryItem(name: key, value: value))
+        }
+        self.queryItems = items.map {
+            URLQueryItem(name: $0.name, value: $0.value)
             
         }
     }

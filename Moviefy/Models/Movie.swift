@@ -43,15 +43,16 @@ public struct MovieModel: Codable {
 
 public struct MoviesResponse: Codable {
     public let page: Int
-    public let totalResults: Int
-    public let totalPages: Int
     public let results: [MovieModel]
+    public let totalPages: Int
+    public let totalResults: Int
     
     enum CodingKeys: String, CodingKey {
            case page = "page"
-           case totalResults = "total_results"
-           case totalPages = "total_pages"
            case results = "results"
+           case totalPages = "total_pages"
+           case totalResults = "total_results"
+          
        }
 }
 

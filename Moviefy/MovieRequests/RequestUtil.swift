@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MovieError: Error {
+ enum MovieError: Error {
     case apiError
     case invalidURL
     case invalidEndpoint
@@ -16,19 +16,19 @@ public enum MovieError: Error {
     case serializationError
 }
 
-public enum MovieAPIResources: String{
+ enum MovieAPIResources: String{
     case popular = "popular",
          top_rated = "top_rated",
          upcoming = "upcoming",
-         trending = "now_playing" //trending
+         trending = "now_playing",//trending
+         movieId = "movie_id"
 }
 
-public enum MovieAPIFormat:String{
-    case api_key = "25ade48746a03a4c0a91070686e7b028",
-         language = "en-US"
+ enum MovieAPIFormat:String{
+    case language = "en-US"
 }
 
-public enum MovieImageSize: String {
+ enum MovieImageSize: String {
     case small = "w92"
     case medium = "w185"
     case big = "w500"

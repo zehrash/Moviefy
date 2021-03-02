@@ -11,26 +11,29 @@ import Foundation
 
 class MovieListModel{
     
-    public init(){
-        movieList = [MovieModel]()
-    }
-    var movieList: [MovieModel]
-    
-    func getMovies(with resources: MovieAPIResources,format: MovieAPIFormat, language: MovieAPIFormat, callback: @escaping (_ response: [MovieModel]) -> Void){
-       // DispatchQueue.main.async {
-      
+    class func getMovies(with resources: MovieAPIResources,language: MovieAPIFormat, callback: @escaping (_ response: [MovieModel]) -> Void){
+       
         MovieAPIRequests.shared.fetchMovies(with: resources.rawValue,
-                                              parameters:["api_key": format.rawValue,
-                                                         "language": language.rawValue]){
-            [weak self] (result) in
+                                              parameters:["language": language.rawValue]){
+            (result) in
             switch result{
             case .success(let data):
-                self?.movieList.append(contentsOf: data.results)
-                callback(self!.movieList)
+                
+                callback(data.results)
             case .failure(let error):
                 print(error)
                 }
-            //}
+        }
+    }
+    class func getMoviesByKeyword( with keyword: String, callback: @escaping (_ response: [MovieModel]) -> Void){
+        MovieAPIRequests.shared.fetchMoviesByKeyword(parameters: ["query": keyword] ){
+            (result) in
+            switch result{
+            case .success(let data):
+                callback(data.results)
+            case .failure(let error):
+                print(error)
+                }
         }
     }
    

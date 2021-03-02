@@ -7,10 +7,11 @@
 
 import UIKit
 
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +19,11 @@ class MainMenuViewController: UIViewController {
         
         }
     
-    // Variables
+    // MARK: Variables
     //----------------------------------------------------------------
 
+
+    
     private lazy var moviesViewController: MoviesViewController = {
       
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -57,13 +60,13 @@ class MainMenuViewController: UIViewController {
         return viewController
     }()
 
-    // Abstract Method
+    // MARK: Abstract Method
     //----------------------------------------------------------------
 
     static func viewController() -> MainMenuViewController {
         return UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewControllerID") as! MainMenuViewController
     }
-    //  Memory Management Methods
+    //  MARK: Memory Management Methods
     //----------------------------------------------------------------
 
     override func didReceiveMemoryWarning() {
@@ -73,6 +76,22 @@ class MainMenuViewController: UIViewController {
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         updateView()
     }
+    
+    @IBAction func onClickSearch(_ sender: Any) {
+        if let viewController = storyboard?.instantiateViewController(identifier: "SearchMoviesViewControllerID") as? SearchMoviesViewController {
+            
+            if(!searchBar.text!.isEmpty){
+              
+                MovieListModel.getMoviesByKeyword(with: searchBar.text!){
+                    result in
+                    viewController.movies = result
+                    self.present(viewController, animated: true)
+                }
+          ///  self.present(viewController, animated: true)
+            }
+        }
+    }
+   
    
     private func add(asChildViewController viewController: UIViewController) {
 
