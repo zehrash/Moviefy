@@ -25,8 +25,9 @@ class SearchMoviesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     func setup(with movie: MovieModel) {
-        Nuke.loadImage(with: movie.posterURL,
+        Nuke.loadImage(with: movie.posterURL!,
                        into: imageOutlet)
         labelOutlet.text = movie.title
        }

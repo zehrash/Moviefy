@@ -11,7 +11,6 @@ class MovieListViewController: UIViewController{
     
     var endpointType:MovieAPIResources?
     var movies = [MovieModel] ()
-    var model = MovieListModel ()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -36,17 +35,16 @@ extension MovieListViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let viewController = storyboard?.instantiateViewController(identifier: "DetailedMovieViewControllerID") as? DetailedMovieViewController {
-            viewController.movieID = (movies[indexPath.row].id)
+            viewController.movieID = movies[indexPath.row].id
             self.present(viewController, animated: true)
         }
-        //print(movies[indexPath.row] as MovieModel )
     }
 }
 
 extension MovieListViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (movies.count)
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

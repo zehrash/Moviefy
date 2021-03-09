@@ -14,7 +14,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     
     func setup(with movie: MovieModel) {
-        Nuke.loadImage(with: movie.posterURL,
+        Nuke.loadImage(with: movie.posterURL!,
                        into: movieImageView)
         movieTitleLabel.text = movie.title
        }

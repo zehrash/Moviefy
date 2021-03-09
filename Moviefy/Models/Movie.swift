@@ -12,19 +12,26 @@ public struct MovieModel: Codable {
     
     public let id: Int
     public let title: String
-    public let backdropPath: String
-    public let posterPath: String
+    public let backdropPath: String?
+    public let posterPath: String?
     public let overview: String
     public let releaseDate: String
     public let voteAverage: Double
     //public let genres: [MovieGenre]?  //had problem with parsing nested genres. Will be fixed soon
-    public var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w300\(posterPath )")!
+    public var posterURL: URL? {
+      guard let str = posterPath else {
+          return URL(string: "https://postimg.cc/CzRpLyCb")!
+      }
+      return URL(string: "https://image.tmdb.org/t/p/w300\(str)")
     }
     
-    public var backdropURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath )")!
+    public var backdropURL: URL? {
+      guard let str = backdropPath else {
+          return URL(string: "https://postimg.cc/CzRpLyCb")!
+      }
+      return URL(string: "https://image.tmdb.org/t/p/w500\(str)")
     }
+  
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"
@@ -52,7 +59,6 @@ public struct MoviesResponse: Codable {
            case results = "results"
            case totalPages = "total_pages"
            case totalResults = "total_results"
-          
        }
 }
 

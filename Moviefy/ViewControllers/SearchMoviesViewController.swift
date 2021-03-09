@@ -8,12 +8,19 @@
 import UIKit
 import Nuke
 
-class SearchMoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchMoviesViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     var movies:[MovieModel]? 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+}
+extension SearchMoviesViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies!.count
@@ -22,22 +29,20 @@ class SearchMoviesViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchMoviesTableViewCell
         
-        cell.labelOutlet.text = movies?[indexPath.row].title
-        
-        Nuke.loadImage(with: movies?[indexPath.row].posterURL as! ImageRequestConvertible,
-                       into: cell.imageOutlet)
-        
+        cell.setup(with: (movies?[indexPath.row])!)
         return cell
     }
+}
+
+extension SearchMoviesViewController: UITableViewDelegate{
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "DetailedMovieViewControllerID") as? DetailedMovieViewController {
+            viewController.movieID = (movies![indexPath.row].id)
+            self.present(viewController, animated: true)
+        }
     }
     
-
-   
-
+    
 }

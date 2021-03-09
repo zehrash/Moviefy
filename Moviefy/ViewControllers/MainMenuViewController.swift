@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainMenuViewController: UIViewController, UISearchBarDelegate {
+class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -16,13 +16,11 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        
+        self.searchBar.delegate = self
         }
     
     // MARK: Variables
     //----------------------------------------------------------------
-
-
     
     private lazy var moviesViewController: MoviesViewController = {
       
@@ -87,7 +85,7 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate {
                     viewController.movies = result
                     self.present(viewController, animated: true)
                 }
-          ///  self.present(viewController, animated: true)
+         
             }
         }
     }
@@ -151,5 +149,11 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+}
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // dismiss keyboard
+        return true
     }
 }

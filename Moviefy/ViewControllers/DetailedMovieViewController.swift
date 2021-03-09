@@ -23,9 +23,6 @@ class DetailedMovieViewController: UIViewController {
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieBackdrop: UIImageView!
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getMovieDetails()
@@ -43,9 +40,9 @@ class DetailedMovieViewController: UIViewController {
             self.movieOverview.text = self.movieModel?.overview
             
             
-            Nuke.loadImage(with: self.movieModel?.posterURL as! ImageRequestConvertible,
+            Nuke.loadImage(with: self.movieModel!.posterURL!,
                            into: self.moviePoster)
-            Nuke.loadImage(with: self.movieModel?.backdropURL as! ImageRequestConvertible,
+            Nuke.loadImage(with: self.movieModel!.backdropURL!,
                            into: self.movieBackdrop)
             
            // self.collectionView.reloadData()

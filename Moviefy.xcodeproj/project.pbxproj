@@ -63,7 +63,7 @@
 		E372DD7F25D2BA1E00ED5B20 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E372DD8225D2BA1E00ED5B20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E372DD8525D2BA1E00ED5B20 /* Moviefy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moviefy.xcdatamodel; sourceTree = "<group>"; };
-		E372DD8725D2BA1F00ED5B20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E372DD8725D2BA1F00ED5B20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Moviefy/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		E372DD8A25D2BA1F00ED5B20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E372DD8C25D2BA1F00ED5B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E372DD9125D2BA2000ED5B20 /* MoviefyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviefyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +72,7 @@
 		E372DD9C25D2BA2000ED5B20 /* MoviefyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviefyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E372DDA025D2BA2000ED5B20 /* MoviefyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviefyUITests.swift; sourceTree = "<group>"; };
 		E372DDA225D2BA2000ED5B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E372DDB525D3DCDF00ED5B20 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E372DDB525D3DCDF00ED5B20 /* Movie.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E372DDBA25D3DCF100ED5B20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E372DDC025D3DDEE00ED5B20 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E372DDC825D3DF2F00ED5B20 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
