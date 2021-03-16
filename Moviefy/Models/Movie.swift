@@ -31,6 +31,8 @@ public struct MovieModel: Codable {
       }
       return URL(string: "https://image.tmdb.org/t/p/w500\(str)")
     }
+  public var backdropImage: Data?
+  public var posterImage:Data?
   
     enum CodingKeys: String, CodingKey {
         case id = "id"
