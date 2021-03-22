@@ -2,7 +2,7 @@
 //  Users+CoreDataProperties.swift
 //  Moviefy
 //
-//  Created by Zehra Iliyaz on 16.03.21.
+//  Created by Zehra Iliyaz on 22.03.21.
 //
 //
 
@@ -17,8 +17,8 @@ extension Users {
     }
 
     @NSManaged public var username: String?
-    @NSManaged public var email: String?
     @NSManaged public var password: String?
+    @NSManaged public var email: String?
 
 }
 

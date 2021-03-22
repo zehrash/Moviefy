@@ -4,7 +4,7 @@
 //
 //  Created by Zehra Iliyaz on 22.02.21.
 //
-
+// swiftlint:disable force_cast
 import UIKit
 
 class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextFieldDelegate {
@@ -25,7 +25,8 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
     private lazy var moviesViewController: MoviesViewController = {
       
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "MoviesViewControllerID") as! MoviesViewController
+        
+       var viewController = storyboard.instantiateViewController(withIdentifier: "MoviesViewControllerID") as! MoviesViewController
 
         // Add View Controller as Child View Controller
         self.add(asChildViewController: viewController)
@@ -35,6 +36,7 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
     private lazy var watchLaterViewController: WatchLaterViewController = {
        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
         var viewController = storyboard.instantiateViewController(withIdentifier: "WatchLaterViewControllerID") as! WatchLaterViewController
         self.add(asChildViewController: viewController)
         
@@ -44,6 +46,7 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
     private lazy var watchedViewController: WatchedViewController = {
        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
         var viewController = storyboard.instantiateViewController(withIdentifier: "WatchedViewControllerID") as! WatchedViewController
         self.add(asChildViewController: viewController)
 

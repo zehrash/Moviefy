@@ -45,12 +45,18 @@ class DetailedMovieViewController: UIViewController {
             self.releaseDate.text = self.movieModel?.releaseDate
             self.movieOverview.text = self.movieModel?.overview
             
-            
+            if let posterURL = self.movieModel?.posterURL{
+                Nuke.loadImage(with: ImageRequest(url: posterURL), into: self.moviePoster)
+            }
+            if let backdropURL = self.movieModel?.backdropURL{
+                Nuke.loadImage(with: ImageRequest(url: backdropURL), into: self.movieBackdrop)
+            }
+            /*
             Nuke.loadImage(with: self.movieModel!.posterURL!,
                            into: self.moviePoster)
             Nuke.loadImage(with: self.movieModel!.backdropURL!,
                            into: self.movieBackdrop)
-      
+      */
         }
        
     }
@@ -58,6 +64,7 @@ class DetailedMovieViewController: UIViewController {
         
        setImages()
        CoreDataManager.sharedManager.saveToWatchLater(username: "user", movie: self.movieModel!)
+        
     }
     
     

@@ -6,24 +6,47 @@
 //
 
 import UIKit
-
+// swiftlint:disable force_cast
 class WatchLaterViewController: UIViewController {
-
+   
+    var movies:[MovieModel?] = []
+    
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadMovies()
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func loadMovies(){
+        movies = CoreDataManager.sharedManager.fetchWatchLaterListMovies(username: "zizi")
+     //     self.collectionView.reloadData()
     }
-    */
+   
+}
+extension WatchLaterViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell=tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchMoviesTableViewCell
+        
+        cell.setup(with: (movies[indexPath.row])!)
+        return cell
+    }
+}
 
+extension WatchLaterViewController: UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "DetailedMovieViewControllerID") as? DetailedMovieViewController {
+            viewController.movieID = (movies[indexPath.row]?.id) as! Int
+            self.present(viewController, animated: true)
+        }
+    }
+    
+    
 }

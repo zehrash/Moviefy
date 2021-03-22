@@ -4,7 +4,7 @@
 //
 //  Created by Zehra Iliyaz on 26.02.21.
 //
-
+// swiftlint:disable force_cast
 import Foundation
 
  enum MovieError: Error {
@@ -18,7 +18,7 @@ import Foundation
 
  enum MovieAPIResources: String{
     case popular = "popular",
-         top_rated = "top_rated",
+         topRated = "top_rated",
          upcoming = "upcoming",
          trending = "now_playing",//trending
          movieId = "movie_id"

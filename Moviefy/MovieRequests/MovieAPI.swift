@@ -4,7 +4,7 @@
 //
 //  Created by Zehra Iliyaz on 16.02.21.
 //
-
+// swiftlint:disable force_cast
 import Foundation
 import UIKit
 
@@ -13,7 +13,7 @@ struct MovieAPIRequests{
     typealias Handler = (Result<MoviesResponse, MovieError>) -> Void
     typealias MovieDetailsHandler = (Result<MovieModel, MovieError>) -> Void
     
-    let api_key = "25ade48746a03a4c0a91070686e7b028"
+    let apiKey = "25ade48746a03a4c0a91070686e7b028"
     let jsonDecoder = JSONDecoder()
     
     private init() {}
@@ -63,8 +63,7 @@ struct MovieAPIRequests{
             }.resume()
         }
      */
-    func fetchMovies(with resources: String, parameters: [String: String],
-                       then handler: @escaping Handler){
+    func fetchMovies(with resources: String, parameters: [String: String], then handler: @escaping Handler){
         
     
      
@@ -181,7 +180,7 @@ extension URLComponents {
     
     mutating func setQueryItems(with parameters: [String: String]) {
         
-        var items = [URLQueryItem(name: "api_key", value: MovieAPIRequests.shared.api_key)]
+        var items = [URLQueryItem(name: "api_key", value: MovieAPIRequests.shared.apiKey)]
         
         for (key,value) in parameters{
             items.append(URLQueryItem(name: key, value: value))

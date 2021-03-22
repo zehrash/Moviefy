@@ -5,6 +5,7 @@
 //  Created by Zehra Iliyaz on 10.02.21.
 //
 
+// swiftlint:disable force_cast
 import UIKit
 
 class MovieListViewController: UIViewController{

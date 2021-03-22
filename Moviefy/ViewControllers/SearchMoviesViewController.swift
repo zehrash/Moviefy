@@ -4,7 +4,7 @@
 //
 //  Created by Zehra Iliyaz on 1.03.21.
 //
-
+// swiftlint:disable force_cast
 import UIKit
 import Nuke
 

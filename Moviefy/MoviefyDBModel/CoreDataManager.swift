@@ -4,7 +4,7 @@
 //
 //  Created by Zehra Iliyaz on 10.03.21.
 //
-
+// swiftlint:disable force_cast
 import Foundation
 import CoreData
 
@@ -13,9 +13,7 @@ class CoreDataManager {
     
     static let sharedManager = CoreDataManager()
     private init() {}
-    
-    
-    
+  
     lazy var persistentContainer: NSPersistentContainer = {
        
        let container = NSPersistentContainer(name: "CoreDataMoviefy")
@@ -41,16 +39,13 @@ class CoreDataManager {
           }
         }
       }
-
+    
     public func insertUser (user:User){
         
-            let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
+        let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
             
-        let entity = NSEntityDescription.entity(forEntityName: "Users",
-                                                in: managedContext)!
-        
-        let userSample = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Users", in: managedContext)!
+        let userSample = NSManagedObject(entity: entity, insertInto: managedContext)
         
         
         userSample.setValue(user.email, forKeyPath: "user_id")
@@ -68,50 +63,71 @@ class CoreDataManager {
     
     public func saveToWatchLater(username:String,movie:MovieModel){
         
-            let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
+        let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
             
-        let entity = NSEntityDescription.entity(forEntityName: "User_watch_later",
+        let entity = NSEntityDescription.entity(forEntityName: "WatchLaterList",
                                                 in: managedContext)!
         
-        let sample = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
+      
+        let movieDetails = MovieDetails (context: managedContext)
+        movieDetails.movieID = Int32(movie.id)
+        movieDetails.title = movie.title
+        movieDetails.releaseDate = movie.releaseDate
+        movieDetails.overview = movie.overview
+        movieDetails.voteAverage = String(movie.voteAverage)
+        movieDetails.backdropImage = movie.backdropImage
+        movieDetails.posterImage = movie.posterImage
         
         
-        sample.setValue(movie.id, forKeyPath: "movie_id")
-        sample.setValue(username, forKeyPath: "username")
-     
+      //  let user = fetchUser(username: username)
+        
+        let watchLaterMovies = WatchLaterList(context: managedContext)
+        watchLaterMovies.movieList = movieDetails
+      //  watchLaterMovies.username = user
         do {
           try managedContext.save()
-            insertMovie(movieModel: movie, backdropImage: movie.backdropImage!, posterImage: movie.posterImage!)
+            var isSaved: Bool = !movieDetails.objectID.isTemporaryID;
+            print(isSaved)
+        //    insertMovie(movieModel: movie, backdropImage: movie.backdropImage!, posterImage: movie.posterImage!)
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
         }
       }
 
-    public func saveToWatchedList(username:String, movie:MovieModel){
+    public func saveToWatchedList(username:String, movie: MovieModel){
         
         let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
             
-        let entity = NSEntityDescription.entity(forEntityName: "User_watched_list",
-                                                in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "WatchedList", in: managedContext)!
         
-        let sample = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
+       // let sample = NSManagedObject(entity: entity, insertInto: managedContext)
         
         
-        sample.setValue(movie.id, forKeyPath: "movie_id")
-        sample.setValue(username, forKeyPath: "username")
+        let movieDetails = MovieDetails (context: managedContext)
+        movieDetails.movieID = Int32(movie.id)
+        movieDetails.title = movie.title
+        movieDetails.releaseDate = movie.releaseDate
+        movieDetails.overview = movie.overview
+        movieDetails.voteAverage = String(movie.voteAverage)
+        movieDetails.backdropImage = movie.backdropImage
+        movieDetails.posterImage = movie.posterImage
+        
+        let user = fetchUser(username: username)
+        
+        let watchLaterMovies = WatchLaterList(context: managedContext)
+        watchLaterMovies.movieList = movieDetails
+        watchLaterMovies.username = user
         
         do {
           try managedContext.save()
-            insertMovie(movieModel: movie, backdropImage: movie.backdropImage!, posterImage: movie.posterImage!)
+          //  insertMovie(movieModel: movie, backdropImage: movie.backdropImage!, posterImage: movie.posterImage!)
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
         }
       }
     
     
-    
+    /*
     func insertMovie( movieModel:MovieModel, backdropImage:Data, posterImage:Data) {
         
     
@@ -138,27 +154,62 @@ class CoreDataManager {
         }
       }
     
-    
-    func fetchWatchedListMovies(username:String)->[Movie_details?]{
-        var movies = [Movie_details?]()
+    */
+    func fetchWatchedListMovies(username:String)->[MovieDetails?]{
+        var movies = [MovieDetails?]()
         let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "User_watched_list")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "WatchedList")
         fetchRequest.predicate = NSPredicate(format: "username == %@" ,username)
         
         do {
-            let result = try managedContext.fetch(fetchRequest)
-            for i in result {
-                movies.append(contentsOf: fetchMovieFromDB(movieID: Int((i as! User_watched_list).movie_id))!)
-            }
-            return movies
+            let result = try managedContext.fetch(fetchRequest) as! [MovieDetails]
+            //for i in result {
+                //movies.append(contentsOf: fetchMovieFromDB(movieID: Int((i as! User_watched_list).movie_id))!)
+           // }
+            return result
         }catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return movies
           }
     }
     
-
+    func fetchWatchLaterListMovies(username:String)->[MovieModel?]{
+        var movies = [MovieModel?]()
+        let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "WatchLaterList")
+        fetchRequest.predicate = NSPredicate(format: "username == %@",username)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest) as! [MovieModel]
+            // for i in result {
+                // movies.append(contentsOf: fetchMovieFromDB(movieID: Int((i as! User_watched_list).movie_id))!)
+           // }
+            return result
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return movies
+          }
+    }
     
+    func fetchUser(username: String)->Users{
+        let user = Users()
+        let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
+        fetchRequest.predicate = NSPredicate(format: "username == %@" ,username)
+        do {
+            let result = try managedContext.fetch(fetchRequest) as! Users
+            //for i in result {
+                //movies.append(contentsOf: fetchMovieFromDB(movieID: Int((i as! User_watched_list).movie_id))!)
+           // }
+            return result
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return user
+          }
+    }
+    
+
+    /*
     func fetchMovieFromDB(movieID:Int) -> [Movie_details]?{
         let managedContext = CoreDataManager.sharedManager.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie_details")
@@ -173,6 +224,7 @@ class CoreDataManager {
               }
     
     }
+ */
     
     
 }

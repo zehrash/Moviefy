@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Movie_details" representedClassName="Movie_details" syncable="YES">
+    <entity name="MovieDetails" representedClassName="MovieDetails" syncable="YES">
         <attribute name="backdropImage" optional="YES" attributeType="Binary"/>
-        <attribute name="movie_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="movieID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="overview" optional="YES" attributeType="String"/>
         <attribute name="posterImage" optional="YES" attributeType="Binary"/>
-        <attribute name="releaseData" optional="YES" attributeType="String"/>
+        <attribute name="releaseDate" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="voteAverage" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="User_watch_later_list" representedClassName="User_watch_later_list" syncable="YES">
-        <relationship name="movie_id" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie_details"/>
-        <relationship name="username" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
-    </entity>
-    <entity name="User_watched_list" representedClassName="User_watched_list" syncable="YES">
-        <relationship name="movie_id" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie_details"/>
-        <relationship name="username" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
     </entity>
     <entity name="Users" representedClassName="Users" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="WatchedList" representedClassName="WatchedList" syncable="YES">
+        <relationship name="movieList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieDetails"/>
+        <relationship name="username" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
+    </entity>
+    <entity name="WatchLaterList" representedClassName="WatchLaterList" syncable="YES">
+        <relationship name="movieList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieDetails"/>
+        <relationship name="username" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
+    </entity>
     <elements>
-        <element name="Users" positionX="-44.718505859375" positionY="-256.3981323242188" width="128" height="88"/>
-        <element name="User_watch_later_list" positionX="190.766357421875" positionY="-222.9070434570312" width="128" height="73"/>
-        <element name="User_watched_list" positionX="-35.5501708984375" positionY="16.24810791015625" width="128" height="73"/>
-        <element name="Movie_details" positionX="237.374267578125" positionY="14.46527099609375" width="128" height="148"/>
+        <element name="Users" positionX="-442.2242431640625" positionY="-296.4223327636719" width="128" height="74"/>
+        <element name="WatchedList" positionX="-77.56536865234375" positionY="-12.55584716796875" width="128" height="73"/>
+        <element name="WatchLaterList" positionX="-88.079345703125" positionY="-363.3713989257812" width="128" height="73"/>
+        <element name="MovieDetails" positionX="417.3997802734375" positionY="-180.5742797851562" width="128" height="134"/>
     </elements>
 </model>

@@ -4,7 +4,7 @@
 //
 //  Created by Zehra Iliyaz on 22.02.21.
 //
-
+// swiftlint:disable force_cast
 import UIKit
 
 class MoviesViewController: UIViewController{
@@ -26,7 +26,7 @@ class MoviesViewController: UIViewController{
             case 1:
                 return .trending.self
             case 2:
-                return .top_rated.self
+                return .topRated.self
             default:
                 return .upcoming.self
             }
