@@ -8,23 +8,25 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    let helper = CoreDataHelper()
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    @IBAction func onStartButtonTap(_ sender: Any) {
+        let isLoggedIn = helper.isUserLoggedIn(username: username.text!)
+        if(username.text != nil && password.text != nil){
+            if(!isLoggedIn){
+                helper.updateLogIn(username:username.text!, isLoggedIn: true)
+                User.shared.setUser(username: username.text!, email: "", password: password.text!) //change isUserLoggedIn to getLoggedInUser and return the user or nil
+            }
+        
+            if let viewController = storyboard?.instantiateViewController(identifier: "MainMenuViewControllerID") as? MainMenuViewController {
+                self.present(viewController, animated: true)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   getLatestMovies()
-      //  getPopularMovies()
-        // Do any additional setup after loading the view.
+
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

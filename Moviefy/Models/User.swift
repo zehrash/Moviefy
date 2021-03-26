@@ -8,18 +8,18 @@
 import Foundation
 
 class User{
+    static let shared = User()
     
-    public let id: Int
-    public let username: String
-    public let email: String
-    public let password: String
+    public var username: String = ""
+    public var email: String = ""
+    public var password: String = ""
     
     
-    init(id:Int, username:String, email:String, password:String) {
-        self.id = id
+    private init(){}
+    
+    func setUser (username:String, email:String, password:String) {
         self.username = username
         self.email = email
         self.password = password
     }
-    
 }

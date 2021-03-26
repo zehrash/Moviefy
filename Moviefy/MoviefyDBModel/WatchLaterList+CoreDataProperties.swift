@@ -2,7 +2,7 @@
 //  WatchLaterList+CoreDataProperties.swift
 //  Moviefy
 //
-//  Created by Zehra Iliyaz on 22.03.21.
+//  Created by Zehra Iliyaz on 25.03.21.
 //
 //
 
@@ -16,7 +16,7 @@ extension WatchLaterList {
         return NSFetchRequest<WatchLaterList>(entityName: "WatchLaterList")
     }
 
-    @NSManaged public var username: Users?
+    @NSManaged public var user: Users?
     @NSManaged public var movieList: MovieDetails?
 
 }

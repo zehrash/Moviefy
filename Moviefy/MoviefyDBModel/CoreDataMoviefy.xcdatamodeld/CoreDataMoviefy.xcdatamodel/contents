@@ -7,25 +7,26 @@
         <attribute name="posterImage" optional="YES" attributeType="Binary"/>
         <attribute name="releaseDate" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="voteAverage" optional="YES" attributeType="String"/>
+        <attribute name="voteAverage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Users" representedClassName="Users" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="isLogged" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <entity name="WatchedList" representedClassName="WatchedList" syncable="YES">
         <relationship name="movieList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieDetails"/>
-        <relationship name="username" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
     </entity>
     <entity name="WatchLaterList" representedClassName="WatchLaterList" syncable="YES">
         <relationship name="movieList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieDetails"/>
-        <relationship name="username" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
     </entity>
     <elements>
-        <element name="Users" positionX="-442.2242431640625" positionY="-296.4223327636719" width="128" height="74"/>
-        <element name="WatchedList" positionX="-77.56536865234375" positionY="-12.55584716796875" width="128" height="73"/>
-        <element name="WatchLaterList" positionX="-88.079345703125" positionY="-363.3713989257812" width="128" height="73"/>
-        <element name="MovieDetails" positionX="417.3997802734375" positionY="-180.5742797851562" width="128" height="134"/>
+        <element name="Users" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="MovieDetails" positionX="-54" positionY="18" width="128" height="134"/>
+        <element name="WatchedList" positionX="-36" positionY="72" width="128" height="59"/>
+        <element name="WatchLaterList" positionX="-18" positionY="81" width="128" height="59"/>
     </elements>
 </model>

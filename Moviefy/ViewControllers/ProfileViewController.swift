@@ -9,9 +9,18 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    var user = User.shared
+     
+    @IBOutlet weak var username: UITextView!
+    @IBOutlet weak var email: UITextView!
+    
+    @IBAction func onSignOutButtonTap(_ sender: Any) {
+        CoreDataHelper().updateLogIn(username: user.username, isLoggedIn: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        username.text = user.username
+        email.text = user.email
     }
 }

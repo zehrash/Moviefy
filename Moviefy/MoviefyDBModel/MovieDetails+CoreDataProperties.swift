@@ -2,7 +2,7 @@
 //  MovieDetails+CoreDataProperties.swift
 //  Moviefy
 //
-//  Created by Zehra Iliyaz on 22.03.21.
+//  Created by Zehra Iliyaz on 25.03.21.
 //
 //
 
@@ -16,13 +16,13 @@ extension MovieDetails {
         return NSFetchRequest<MovieDetails>(entityName: "MovieDetails")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var overview: String?
-    @NSManaged public var backdropImage: Data?
     @NSManaged public var posterImage: Data?
-    @NSManaged public var voteAverage: String?
-    @NSManaged public var releaseDate: String?
+    @NSManaged public var backdropImage: Data?
     @NSManaged public var movieID: Int32
+    @NSManaged public var voteAverage: Double
+    @NSManaged public var releaseDate: String?
+    @NSManaged public var overview: String?
+    @NSManaged public var title: String?
 
 }
 

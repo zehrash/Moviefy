@@ -16,7 +16,6 @@ class DetailedMovieViewController: UIViewController {
     let movieDetailsModel = MovieDetailsModel ()
     
     
-    
     @IBOutlet weak var movieOverview: UITextView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieScore: UILabel!
@@ -51,28 +50,20 @@ class DetailedMovieViewController: UIViewController {
             if let backdropURL = self.movieModel?.backdropURL{
                 Nuke.loadImage(with: ImageRequest(url: backdropURL), into: self.movieBackdrop)
             }
-            /*
-            Nuke.loadImage(with: self.movieModel!.posterURL!,
-                           into: self.moviePoster)
-            Nuke.loadImage(with: self.movieModel!.backdropURL!,
-                           into: self.movieBackdrop)
-      */
         }
-       
     }
+    
     @IBAction func onWatchLaterButtonClick(_ sender: Any) {
-        
        setImages()
-       CoreDataManager.sharedManager.saveToWatchLater(username: "user", movie: self.movieModel!)
-        
+        CoreDataHelper().addToWatchLater(movie: self.movieModel!)
+       //CoreDataManager.sharedManager.saveToWatchLater(username: "user", movie: self.movieModel!)
     }
-    
-    
     
     @IBAction func onWatchedButtonClick(_ sender: Any) {
     
     setImages()
-        CoreDataManager.sharedManager.saveToWatchedList(username: "user", movie: self.movieModel!)
+        CoreDataHelper().addToWatched(movie: self.movieModel!)
+        //CoreDataManager.sharedManager.saveToWatchedList(username: "user", movie: self.movieModel!)
     }
 
     

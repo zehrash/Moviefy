@@ -5,6 +5,7 @@
 //  Created by Zehra Iliyaz on 22.02.21.
 //
 // swiftlint:disable force_cast
+// swiftlint:disable trailing_whitespace
 import UIKit
 
 class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextFieldDelegate {
@@ -12,6 +13,7 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UITextField!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,8 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
       
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
-       var viewController = storyboard.instantiateViewController(withIdentifier: "MoviesViewControllerID") as! MoviesViewController
+       var viewController = storyboard.instantiateViewController(withIdentifier: "MoviesViewControllerID")
+        as! MoviesViewController
 
         // Add View Controller as Child View Controller
         self.add(asChildViewController: viewController)
@@ -37,7 +40,8 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
-        var viewController = storyboard.instantiateViewController(withIdentifier: "WatchLaterViewControllerID") as! WatchLaterViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "WatchLaterViewControllerID")
+            as! WatchLaterViewController
         self.add(asChildViewController: viewController)
         
         return viewController
@@ -47,7 +51,8 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
-        var viewController = storyboard.instantiateViewController(withIdentifier: "WatchedViewControllerID") as! WatchedViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "WatchedViewControllerID")
+            as! WatchedViewController
         self.add(asChildViewController: viewController)
 
         return viewController
@@ -55,20 +60,22 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
     private lazy var profileViewController: ProfileViewController = {
        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewControllerID") as! ProfileViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewControllerID")
+            as! ProfileViewController
         self.add(asChildViewController: viewController)
 
         return viewController
     }()
 
     // MARK: Abstract Method
-    //----------------------------------------------------------------
+    // ----------------------------------------------------------------
 
     static func viewController() -> MainMenuViewController {
-        return UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewControllerID") as! MainMenuViewController
+        return UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewControllerID")
+            as! MainMenuViewController
     }
-    //  MARK: Memory Management Methods
-    //----------------------------------------------------------------
+    //MARK: Memory Management Methods
+    // ----------------------------------------------------------------
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -79,21 +86,18 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
     }
     
     @IBAction func onClickSearch(_ sender: Any) {
-        if let viewController = storyboard?.instantiateViewController(identifier: "SearchMoviesViewControllerID") as? SearchMoviesViewController {
+        if let viewController = storyboard?.instantiateViewController(identifier: "SearchMoviesViewControllerID")
+            as? SearchMoviesViewController {
             
-            if(!searchBar.text!.isEmpty){
-              
-                MovieListModel.getMoviesByKeyword(with: searchBar.text!){
-                    result in
+            if !searchBar.text!.isEmpty {
+            
+                MovieListModel.getMoviesByKeyword(with: searchBar.text!){ result in
                     viewController.movies = result
                     self.present(viewController, animated: true)
                 }
-         
             }
         }
     }
-   
-   
     private func add(asChildViewController viewController: UIViewController) {
 
         addChild(viewController)
@@ -122,19 +126,17 @@ class MainMenuViewController: UIViewController, UISearchBarDelegate, UITextField
             remove(asChildViewController: watchLaterViewController)
             remove(asChildViewController: profileViewController)
             add(asChildViewController: moviesViewController)
-        }else if(segmentControl.selectedSegmentIndex == 1 ){
+        }else if segmentControl.selectedSegmentIndex == 1 {
             remove(asChildViewController: moviesViewController)
             remove(asChildViewController: watchedViewController)
             remove(asChildViewController: profileViewController)
             add(asChildViewController: watchLaterViewController)
-        }
-        else if(segmentControl.selectedSegmentIndex == 2 ){
+        }else if segmentControl.selectedSegmentIndex == 2 {
             remove(asChildViewController: moviesViewController)
             remove(asChildViewController: watchLaterViewController)
             remove(asChildViewController: profileViewController)
             add(asChildViewController: watchedViewController)
-        }
-        else {
+        }else {
             remove(asChildViewController: moviesViewController)
             remove(asChildViewController: watchLaterViewController)
             remove(asChildViewController: watchedViewController)
